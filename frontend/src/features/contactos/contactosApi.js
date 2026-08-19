@@ -1,4 +1,4 @@
-const API_URL = 'https://glorious-xylophone-wrg5wrwqr7x7h9g7q-8000.app.github.dev'
+const API_URL = 'https://agenda-app-sf2i.onrender.com'
 
 export async function crearContacto(contacto) {
   const respuesta = await fetch(`${API_URL}/contactos`, {
