@@ -12,3 +12,6 @@ class ContactoResponse(ContactoCreate):
 
     class Config:
         orm_mode = True
+
+class ContactoUpdate(ContactoCreate):
+    pass

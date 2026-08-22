@@ -1,8 +1,7 @@
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 from typing import Optional, List
-
 import models
 import schemas
 from database import engine, SessionLocal, Base
@@ -39,3 +38,14 @@ def buscar_contactos(nombre: Optional[str] = None, db: Session = Depends(get_db)
     if nombre:
         query = query.filter(models.Contacto.nombre.ilike(f"%{nombre}%"))
     return query.all()
+
+@app.put("/contactos/{contacto_id}", response_model=schemas.ContactoResponse)
+def actualizar_contacto(contacto_id: int, contacto: schemas.ContactoUpdate, db: Session = Depends(get_db)):
+    existente = db.query(models.Contacto).filter(models.Contacto.id == contacto_id).first()
+    if not existente:
+        raise HTTPException(status_code=404, detail="Contacto no encontrado")
+    for campo, valor in contacto.dict().items():
+        setattr(existente, campo, valor)
+    db.commit()
+    db.refresh(existente)
+    return existente
