@@ -15,3 +15,9 @@ class ContactoResponse(ContactoCreate):
 
 class ContactoUpdate(ContactoCreate):
     pass
+
+class ContactoPatch(BaseModel):
+    nombre: Optional[str] = None
+    email: Optional[str] = None
+    telefono: Optional[str] = None
+    nota: Optional[str] = None
