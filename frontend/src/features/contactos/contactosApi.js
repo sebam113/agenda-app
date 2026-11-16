@@ -22,3 +22,13 @@ export async function buscarContactos(nombre = '') {
   }
   return respuesta.json()
 }
+
+export async function eliminarContacto(id) {
+  const respuesta = await fetch(`${API_URL}/contactos/${id}`, {
+    method: 'DELETE',
+  })
+  if (!respuesta.ok) {
+    throw new Error('No se pudo eliminar el contacto')
+  }
+  return respuesta.json()
+}
