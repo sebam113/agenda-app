@@ -5,6 +5,8 @@ import FormularioContacto from './features/contactos/FormularioContacto'
 import BuscadorContactos from './features/contactos/BuscadorContactos'
 
 function App() {
+  const [contactoEnEdicion, setContactoEnEdicion] = useState(null)
+
   return (
     <>
       <Hero />
