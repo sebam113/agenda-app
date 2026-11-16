@@ -60,3 +60,12 @@ def modificar_contacto(contacto_id: int, contacto: schemas.ContactoPatch, db: Se
     db.commit()
     db.refresh(existente)
     return existente
+
+@app.delete("/contactos/{contacto_id}")
+def eliminar_contacto(contacto_id: int, db: Session = Depends(get_db)):
+    existente = db.query(models.Contacto).filter(models.Contacto.id == contacto_id).first()
+    if not existente:
+        raise HTTPException(status_code=404, detail="Contacto no encontrado")
+    db.delete(existente)
+    db.commit()
+    return {"mensaje": "Contacto eliminado"}
