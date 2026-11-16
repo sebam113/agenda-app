@@ -32,3 +32,15 @@ export async function eliminarContacto(id) {
   }
   return respuesta.json()
 }
+
+export async function editarContacto(id, cambios) {
+  const respuesta = await fetch(`${API_URL}/contactos/${id}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(cambios),
+  })
+  if (!respuesta.ok) {
+    throw new Error('No se pudo editar el contacto')
+  }
+  return respuesta.json()
+}
