@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { buscarContactos } from './contactosApi'
+import { buscarContactos, eliminarContacto } from './contactosApi'
 
 function BuscadorContactos() {
   const [nombre, setNombre] = useState('')
@@ -25,6 +25,15 @@ function BuscadorContactos() {
   function manejarBusqueda(evento) {
     evento.preventDefault()
     cargarContactos(nombre)
+  }
+
+  async function manejarEliminar(id) {
+    try {
+      await eliminarContacto(id)
+      cargarContactos(nombre)
+    } catch (error) {
+      alert('No se pudo eliminar el contacto')
+    }
   }
 
   return (
