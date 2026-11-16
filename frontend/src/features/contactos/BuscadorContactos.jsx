@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { buscarContactos, eliminarContacto } from './contactosApi'
 
-function BuscadorContactos() {
+function BuscadorContactos({ alEditar }) {
   const [nombre, setNombre] = useState('')
   const [contactos, setContactos] = useState([])
   const [cargando, setCargando] = useState(false)
