@@ -55,6 +55,7 @@ function BuscadorContactos() {
           <li key={contacto.id}>
             <strong>{contacto.nombre}</strong> — {contacto.email}
             {contacto.telefono && ` — ${contacto.telefono}`}
+            <button onClick={() => manejarEliminar(contacto.id)}>Borrar</button>
           </li>
         ))}
       </ul>
