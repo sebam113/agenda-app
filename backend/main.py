@@ -49,3 +49,14 @@ def actualizar_contacto(contacto_id: int, contacto: schemas.ContactoUpdate, db: 
     db.commit()
     db.refresh(existente)
     return existente
+
+@app.patch("/contactos/{contacto_id}", response_model=schemas.ContactoResponse)
+def modificar_contacto(contacto_id: int, contacto: schemas.ContactoPatch, db: Session = Depends(get_db)):
+    existente = db.query(models.Contacto).filter(models.Contacto.id == contacto_id).first()
+    if not existente:
+        raise HTTPException(status_code=404, detail="Contacto no encontrado")
+    for campo, valor in contacto.dict(exclude_unset=True).items():
+        setattr(existente, campo, valor)
+    db.commit()
+    db.refresh(existente)
+    return existente
