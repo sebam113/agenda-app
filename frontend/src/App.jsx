@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Hero from './components/Hero'
 import Sobre from './components/Sobre'
 import FormularioContacto from './features/contactos/FormularioContacto'
