@@ -17,8 +17,11 @@ function App() {
     <>
       <Hero />
       <Sobre />
-      <FormularioContacto contactoEnEdicion={contactoEnEdicion} />
-      <BuscadorContactos alEditar={setContactoEnEdicion} />
+      <FormularioContacto
+        contactoEnEdicion={contactoEnEdicion}
+        alGuardar={manejarGuardado}
+      />
+      <BuscadorContactos alEditar={setContactoEnEdicion} version={version} />
     </>
   )
 }
