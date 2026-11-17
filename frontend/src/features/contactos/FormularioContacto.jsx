@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { crearContacto } from './contactosApi'
 
-function FormularioContacto() {
+function FormularioContacto({ contactoEnEdicion }) {
   const [formulario, setFormulario] = useState({
     nombre: '',
     email: '',
