@@ -10,6 +10,17 @@ function FormularioContacto({ contactoEnEdicion }) {
   })
   const [mensaje, setMensaje] = useState('')
 
+  useEffect(() => {
+    if (contactoEnEdicion) {
+      setFormulario({
+        nombre: contactoEnEdicion.nombre,
+        email: contactoEnEdicion.email,
+        telefono: contactoEnEdicion.telefono || '',
+        nota: contactoEnEdicion.nota || '',
+      })
+    }
+  }, [contactoEnEdicion])
+
   function manejarCambio(evento) {
     const { name, value } = evento.target
     setFormulario({ ...formulario, [name]: value })
