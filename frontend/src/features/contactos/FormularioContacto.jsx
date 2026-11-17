@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { crearContacto, editarContacto } from './contactosApi'
 
-function FormularioContacto({ contactoEnEdicion }) {
+function FormularioContacto({ contactoEnEdicion, alGuardar }) {
   const [formulario, setFormulario] = useState({
     nombre: '',
     email: '',
@@ -37,6 +37,7 @@ function FormularioContacto({ contactoEnEdicion }) {
         setMensaje('Contacto guardado correctamente')
       }
       setFormulario({ nombre: '', email: '', telefono: '', nota: '' })
+      alGuardar()
     } catch (error) {
       setMensaje('Error al guardar el contacto')
     }
