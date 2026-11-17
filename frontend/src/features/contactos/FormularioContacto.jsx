@@ -29,8 +29,13 @@ function FormularioContacto({ contactoEnEdicion }) {
   async function manejarEnvio(evento) {
     evento.preventDefault()
     try {
-      await crearContacto(formulario)
-      setMensaje('Contacto guardado correctamente')
+            if (contactoEnEdicion) {
+        await editarContacto(contactoEnEdicion.id, formulario)
+        setMensaje('Contacto editado correctamente')
+      } else {
+        await crearContacto(formulario)
+        setMensaje('Contacto guardado correctamente')
+      }
       setFormulario({ nombre: '', email: '', telefono: '', nota: '' })
     } catch (error) {
       setMensaje('Error al guardar el contacto')
