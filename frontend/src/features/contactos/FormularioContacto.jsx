@@ -29,7 +29,7 @@ function FormularioContacto({ contactoEnEdicion }) {
   async function manejarEnvio(evento) {
     evento.preventDefault()
     try {
-            if (contactoEnEdicion) {
+        if (contactoEnEdicion) {
         await editarContacto(contactoEnEdicion.id, formulario)
         setMensaje('Contacto editado correctamente')
       } else {
