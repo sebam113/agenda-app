@@ -6,6 +6,12 @@ import BuscadorContactos from './features/contactos/BuscadorContactos'
 
 function App() {
   const [contactoEnEdicion, setContactoEnEdicion] = useState(null)
+  const [version, setVersion] = useState(0)
+
+  function manejarGuardado() {
+    setVersion(version + 1)
+    setContactoEnEdicion(null)
+  }
 
   return (
     <>
