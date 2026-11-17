@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { buscarContactos, eliminarContacto } from './contactosApi'
 
-function BuscadorContactos({ alEditar }) {
+function BuscadorContactos({ alEditar, version }) {
   const [nombre, setNombre] = useState('')
   const [contactos, setContactos] = useState([])
   const [cargando, setCargando] = useState(false)
@@ -19,8 +19,8 @@ function BuscadorContactos({ alEditar }) {
   }
 
   useEffect(() => {
-    cargarContactos('')
-  }, [])
+    cargarContactos(nombre)
+  }, [version])
 
   function manejarBusqueda(evento) {
     evento.preventDefault()
