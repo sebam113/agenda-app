@@ -62,7 +62,7 @@ function BuscadorContactos({ alEditar }) {
           <li key={contacto.id}>
             <strong>{contacto.nombre}</strong> — {contacto.email}
             {contacto.telefono && ` — ${contacto.telefono}`}
-            <button onClick={() => alEditar(contacto)}>Editar</button>
+            <button onClick={() => manejarEditar(contacto)}>Editar</button>
             <button onClick={() => manejarEliminar(contacto.id)}>Borrar</button>
           </li>
         ))}
