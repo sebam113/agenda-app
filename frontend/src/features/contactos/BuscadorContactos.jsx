@@ -36,6 +36,13 @@ function BuscadorContactos({ alEditar }) {
     }
   }
 
+  function manejarEditar(contacto) {
+    alEditar(contacto)
+    document
+      .getElementById('formulario-contacto')
+      .scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <section className="buscador-contactos">
       <h2>Buscar contactos</h2>
