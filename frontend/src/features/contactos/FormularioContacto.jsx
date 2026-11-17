@@ -43,7 +43,7 @@ function FormularioContacto({ contactoEnEdicion }) {
   }
 
   return (
-    <section className="formulario-contacto">
+      <section className="formulario-contacto" id="formulario-contacto">
       <h2>Agregar contacto</h2>
       <form onSubmit={manejarEnvio}>
         <input
