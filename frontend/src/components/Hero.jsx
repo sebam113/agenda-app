@@ -1,7 +1,8 @@
 function Hero() {
   return (
-      <h1>Sebastián — Desarrollador Fullstack Web</h1>
     <section className="hero">
+      <h1>Sebastián — Desarrollador Fullstack Web</h1>
+    
       <p>
         Este proyecto es una aplicación de aprendizaje y portfolio,
         construida con PostgreSQL, FastAPI y React. Cada parte fue
